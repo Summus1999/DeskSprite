@@ -530,3 +530,26 @@ canvas {
   color: #8f8;
   padding: 4px 16px 8px;
 }
+
+/* ── DeepSeek API 设置 ── */
+
+.stock-model-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.stock-model-icon {
+  font-size: 18px;
+}
+
+.stock-model-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #c0d0ff;
+  font-family: monospace;
+}

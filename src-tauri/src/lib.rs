@@ -1,5 +1,6 @@
 mod tray;
 mod stock;
+mod deepseek;
 
 use std::sync::Mutex;
 use stock::MonitorState;
@@ -28,6 +29,7 @@ pub fn run() {
             stock::add_stock_monitor,
             stock::remove_stock_monitor,
             stock::list_stock_monitors,
+            deepseek::setup_deepseek_key,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
