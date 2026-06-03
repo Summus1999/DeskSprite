@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* 必须完全透明，否则 Windows WebView2 会把窗口合成出白色底，出现「大白边」 */
+  background: transparent !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+canvas {
+  display: block;
+}
