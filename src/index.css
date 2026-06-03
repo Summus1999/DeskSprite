@@ -17,3 +17,516 @@ html, body, #root {
 canvas {
   display: block;
 }
+
+/* ===================================================================
+   右键菜单
+   =================================================================== */
+
+.context-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+.context-menu {
+  position: fixed;
+  z-index: 20;
+  min-width: 140px;
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 4px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.context-menu-item {
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.context-menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.context-menu-separator {
+  height: 1px;
+  margin: 4px 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===================================================================
+   盯盘面板
+   =================================================================== */
+
+.stock-panel-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stock-panel {
+  width: 360px;
+  max-height: 440px;
+  background: rgba(25, 25, 30, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.stock-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stock-panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.stock-panel-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.stock-panel-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stock-panel-section {
+  padding: 12px 16px;
+  overflow-y: auto;
+}
+
+.stock-panel-label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stock-input-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.stock-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #e0e0e0;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.stock-input:focus {
+  border-color: rgba(100, 150, 255, 0.5);
+}
+
+.stock-input::placeholder {
+  color: #666;
+}
+
+.stock-input-threshold {
+  max-width: 90px;
+}
+
+.stock-select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: #e0e0e0;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.stock-select option {
+  background: #1e1e24;
+  color: #e0e0e0;
+}
+
+.stock-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 6px 14px;
+  color: #d0d0d0;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.stock-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.stock-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.stock-btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.stock-btn-primary {
+  width: 100%;
+  background: rgba(80, 140, 255, 0.25);
+  border-color: rgba(80, 140, 255, 0.4);
+  color: #b0d0ff;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.stock-btn-primary:hover:not(:disabled) {
+  background: rgba(80, 140, 255, 0.4);
+  border-color: rgba(80, 140, 255, 0.6);
+}
+
+.stock-btn-danger {
+  background: rgba(255, 80, 80, 0.15);
+  border-color: rgba(255, 80, 80, 0.3);
+  color: #ffaaaa;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.stock-btn-danger:hover {
+  background: rgba(255, 80, 80, 0.3);
+}
+
+.stock-error {
+  font-size: 12px;
+  color: #ff6b6b;
+  margin-bottom: 6px;
+}
+
+.stock-confirm-name {
+  font-size: 13px;
+  color: #8f8;
+  margin-bottom: 6px;
+}
+
+.stock-empty {
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* 事件标签 */
+.stock-event-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.stock-event-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(100, 150, 255, 0.15);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  border-radius: 12px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: #b0d0ff;
+}
+
+.stock-event-tag-small {
+  font-size: 11px;
+  padding: 2px 8px;
+}
+
+.stock-event-tag-remove {
+  background: none;
+  border: none;
+  color: #8899cc;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  line-height: 1;
+}
+
+.stock-event-tag-remove:hover {
+  color: #ff8888;
+}
+
+/* 监控列表 */
+.stock-monitor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stock-monitor-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stock-monitor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stock-monitor-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e8e8e8;
+}
+
+.stock-monitor-code {
+  font-size: 11px;
+  color: #777;
+}
+
+.stock-monitor-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+/* ===================================================================
+   智能输入
+   =================================================================== */
+
+.stock-intent-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #e8e8e8;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.stock-intent-input:focus {
+  border-color: rgba(100, 150, 255, 0.5);
+}
+
+.stock-intent-input::placeholder {
+  color: #555;
+  font-size: 13px;
+}
+
+.stock-intent-hint {
+  font-size: 11px;
+  color: #555;
+  margin: 4px 0 8px;
+  text-align: right;
+}
+
+/* ── 解析结果卡片 ── */
+
+.stock-parse-error {
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.stock-parse-error-icon {
+  font-size: 24px;
+  color: #ff6b6b;
+  margin-bottom: 6px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 80, 80, 0.15);
+  display: inline-block;
+  font-weight: bold;
+}
+
+.stock-parse-error-text {
+  font-size: 13px;
+  color: #ff9999;
+  margin: 6px 0 2px;
+}
+
+.stock-parse-error-hint {
+  font-size: 11px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.stock-parse-result {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stock-parse-stock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+}
+
+.stock-parse-stock-icon {
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 6px;
+  background: rgba(80, 200, 120, 0.15);
+  color: #6f6;
+  font-weight: bold;
+}
+
+.stock-parse-stock-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.stock-parse-stock-code {
+  font-size: 11px;
+  color: #777;
+  font-family: monospace;
+}
+
+.stock-parse-stock-fuzzy {
+  font-size: 10px;
+  color: #ffa;
+  background: rgba(255, 255, 100, 0.12);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.stock-parse-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stock-parse-event-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(100, 180, 255, 0.18);
+  border: 1px solid rgba(100, 180, 255, 0.35);
+  border-radius: 12px;
+  padding: 4px 12px;
+  font-size: 13px;
+  color: #c0dfff;
+}
+
+/* ── 快速事件按钮 ── */
+
+.stock-quick-events {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.stock-quick-label {
+  font-size: 11px;
+  color: #666;
+}
+
+.stock-quick-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.stock-quick-btn:hover {
+  background: rgba(100, 150, 255, 0.2);
+  border-color: rgba(100, 150, 255, 0.4);
+  color: #c0dfff;
+}
+
+/* ── 确认按钮 ── */
+
+.stock-btn-confirm {
+  width: 100%;
+  background: rgba(80, 200, 120, 0.2);
+  border: 1px solid rgba(80, 200, 120, 0.35);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #b0ffc0;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.stock-btn-confirm:hover:not(:disabled) {
+  background: rgba(80, 200, 120, 0.35);
+  border-color: rgba(80, 200, 120, 0.5);
+}
+
+.stock-btn-confirm:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ── 保存提示 ── */
+
+.stock-save-msg {
+  text-align: center;
+  font-size: 13px;
+  color: #8f8;
+  padding: 4px 16px 8px;
+}
